@@ -12,6 +12,8 @@ const {
   studentavatar,
   applyinternship,
   applyjob,
+  readalljobs,
+  readallinternships,
 } = require("../controllers/indexControllers");
 const { isauthenticated } = require("../middlewares/auth");
 const router = express.Router();
@@ -49,6 +51,16 @@ router.post("/student/update/:id", isauthenticated, studentupdate);
 
 // POST /student/avatar/:studentId
 router.post("/student/avatar/:id", isauthenticated, studentavatar);
+
+// --------------- read all Jobs -------------------
+
+// POST /student/alljobs
+router.post("/student/alljobs", isauthenticated, readalljobs);
+
+// --------------- read all Internships -------------------
+
+// POST /student/allinternships
+router.post("/student/allinternships", isauthenticated, readallinternships);
 
 // --------------- Apply Internship ----------------
 

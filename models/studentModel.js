@@ -33,7 +33,7 @@ const studentModel = new mongoose.Schema(
       type: Object,
       default: {
         fileId: "",
-        url: "https://plus.unsplash.com/premium_photo-1689596510275-4ccefe8291a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60",
+        url: "https://plus.unsplash.com/premium_photo-1692441579282-6a106b012a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=700&q=60",
       },
     },
 

@@ -14,7 +14,10 @@ exports.homepage = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.currentUser = catchAsyncErrors(async (req, res, next) => {
-  const student = await Student.findById(req.id);
+  const student = await Student.findById(req.id)
+    .populate("jobs")
+    .populate("internships")
+    .exec();
   res.status(200).json({ student });
 });
 
@@ -124,6 +127,21 @@ exports.studentavatar = catchAsyncErrors(async (req, res, next) => {
   student.avatar = { fileId, url };
   await student.save();
   res.status(200).json({ success: true, message: "avatar uploaded", student });
+});
+
+// --------------- read all Jobs -------------------
+
+exports.readalljobs = catchAsyncErrors(async (req, res, next) => {
+  const jobs = await Job.find();
+  res.status(200).json({ success: true, jobs });
+});
+
+// --------------- read all Internships -------------------
+
+exports.readallinternships = catchAsyncErrors(async (req, res, next) => {
+  const internships = await Internship.find();
+  console.log(internships);
+  res.status(200).json({ success: true, internships });
 });
 
 // --------------- Apply Internship ----------------

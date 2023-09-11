@@ -61,14 +61,12 @@ router.post("/internship/read", isauthenticated, readInternship);
 // POST /employe/internship/read:id
 router.post("/internship/read/:id", isauthenticated, readSingleInternship);
 
-
 // ------------ Job -------------------
-
 
 // POST /employe/job/create
 router.post("/job/create", isauthenticated, createJob);
 
-// POST /employe/job/read 
+// POST /employe/job/read
 router.post("/job/read", isauthenticated, readJob);
 
 // POST /employe/job/read:id
