@@ -14,26 +14,26 @@ const studentModel = new mongoose.Schema(
       required: [true, "Last Name is required"],
       maxLength: [15, "Last Name should not exceed more than 15 characters"],
     },
-    contact: {
-      type: String,
-      required: [true, "Contact is required"],
-      maxLength: [10, "Contact should not exceed more than 10 characters"],
-      minLength: [10, "Contact should have atleast 10 characters"],
-    },
-    city: {
-      type: String,
-      required: [true, "City is required"],
-      minLength: [3, "City should have atleast 3 characters"],
-    },
-    gender: {
-      type: String,
-      enum: ["Male", "Female", "Other"],
-    },
+    // contact: {
+    //   type: String,
+    //   required: [true, "Contact is required"],
+    //   maxLength: [10, "Contact should not exceed more than 10 characters"],
+    //   minLength: [10, "Contact should have atleast 10 characters"],
+    // },
+    // city: {
+    //   type: String,
+    //   required: [true, "City is required"],
+    //   minLength: [3, "City should have atleast 3 characters"],
+    // },
+    // gender: {
+    //   type: String,
+    //   enum: ["Male", "Female", "Other"],
+    // },
     avatar: {
       type: Object,
       default: {
         fileId: "",
-        url: "https://plus.unsplash.com/premium_photo-1692441579282-6a106b012a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=700&q=60",
+        url: "https://plus.unsplash.com/premium_photo-1692441579282-6a106b012a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=70 0&q=60",
       },
     },
 
