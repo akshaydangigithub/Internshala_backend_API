@@ -16,7 +16,7 @@ const internshipModel = new mongoose.Schema(
     skill: String,
     internshiptype: {
       type: String,
-      enum: ["In ofice", "remote"],
+      enum: ["In office", "Remote"],
     },
     openings: Number,
     from: String,
@@ -26,7 +26,7 @@ const internshipModel = new mongoose.Schema(
     stipend: {
       status: {
         type: String,
-        enum: ["fixed", "negotiable", "performance based", "unpaid"],
+        enum: ["Fixed", "Negotiable", "Performance based", "Unpaid"],
       },
       amount: Number,
     },

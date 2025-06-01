@@ -97,12 +97,13 @@ exports.employeforgetlink = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.employeresetpassword = catchAsyncErrors(async (req, res, next) => {
-  const employe = await Employe.findById(req.id);
+  const employe = await Employe.findById(req.params.id);
 
   employe.password = req.body.password;
   await employe.save();
 
   sendtoken(employe, 200, res);
+  // res.json({ employe });
 });
 
 exports.employeupdate = catchAsyncErrors(async (req, res, next) => {
@@ -115,7 +116,7 @@ exports.employeupdate = catchAsyncErrors(async (req, res, next) => {
 exports.employeavatar = catchAsyncErrors(async (req, res, next) => {
   const employe = await Employe.findById(req.params.id);
   const file = req.files.avatar;
-  const fileName = `resummebuilder-${Date.now()}${path.extname(file.name)}`;
+  const fileName = x``
 
   if (employe.avatar.fileId !== "") {
     await imagekit.deleteFile(employe.avatar.fileId);
@@ -128,6 +129,20 @@ exports.employeavatar = catchAsyncErrors(async (req, res, next) => {
   employe.avatar = { fileId, url };
   await employe.save();
   res.status(200).json({ success: true, message: "avatar uploaded", employe });
+});
+
+// --------------- read all Jobs -------------------
+
+exports.readalljobs = catchAsyncErrors(async (req, res, next) => {
+  const jobs = await Job.find().populate("employe");
+  res.status(200).json({ success: true, jobs });
+});
+
+// --------------- read all Internships -------------------
+
+exports.readallinternships = catchAsyncErrors(async (req, res, next) => {
+  const internships = await Internship.find().populate("employe");
+  res.status(200).json({ success: true, internships });
 });
 
 // --------------------- Internship ----------------------------

@@ -16,8 +16,19 @@ exports.homepage = catchAsyncErrors(async (req, res, next) => {
 exports.currentUser = catchAsyncErrors(async (req, res, next) => {
   const student = await Student.findById(req.id)
     .populate("jobs")
-    .populate("internships")
-    .exec();
+    .populate("internships");
+
+  await Student.populate(student, [
+    {
+      path: "internships.employe",
+      model: "employe",
+    },
+    {
+      path: "jobs.employe",
+      model: "employe",
+    },
+  ]);
+
   res.status(200).json({ student });
 });
 
@@ -96,13 +107,19 @@ exports.studentforgetlink = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.studentresetpassword = catchAsyncErrors(async (req, res, next) => {
-  const student = await Student.findById(req.id);
+  const student = await Student.findById(req.params.id);
 
-  student.password = req.body.password;
+  const newPassword = req.body.password;
+  if (!newPassword) {
+    return res.status(400).json({ message: "Password is required" });
+  }
+
+  student.password = newPassword;
   await student.save();
 
   sendtoken(student, 200, res);
 });
+
 
 exports.studentupdate = catchAsyncErrors(async (req, res, next) => {
   const student = await Student.findByIdAndUpdate(req.params.id, req.body);
@@ -132,15 +149,14 @@ exports.studentavatar = catchAsyncErrors(async (req, res, next) => {
 // --------------- read all Jobs -------------------
 
 exports.readalljobs = catchAsyncErrors(async (req, res, next) => {
-  const jobs = await Job.find();
+  const jobs = await Job.find().populate("employe");
   res.status(200).json({ success: true, jobs });
 });
 
 // --------------- read all Internships -------------------
 
 exports.readallinternships = catchAsyncErrors(async (req, res, next) => {
-  const internships = await Internship.find();
-  console.log(internships);
+  const internships = await Internship.find().populate("employe");
   res.status(200).json({ success: true, internships });
 });
 

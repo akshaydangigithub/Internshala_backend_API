@@ -55,12 +55,12 @@ router.post("/student/avatar/:id", isauthenticated, studentavatar);
 // --------------- read all Jobs -------------------
 
 // POST /student/alljobs
-router.post("/student/alljobs", isauthenticated, readalljobs);
+router.post("/student/alljobs", readalljobs);
 
 // --------------- read all Internships -------------------
 
 // POST /student/allinternships
-router.post("/student/allinternships", isauthenticated, readallinternships);
+router.post("/student/allinternships", readallinternships);
 
 // --------------- Apply Internship ----------------
 

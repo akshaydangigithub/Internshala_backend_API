@@ -14,21 +14,21 @@ const studentModel = new mongoose.Schema(
       required: [true, "Last Name is required"],
       maxLength: [15, "Last Name should not exceed more than 15 characters"],
     },
-    // contact: {
-    //   type: String,
-    //   required: [true, "Contact is required"],
-    //   maxLength: [10, "Contact should not exceed more than 10 characters"],
-    //   minLength: [10, "Contact should have atleast 10 characters"],
-    // },
-    // city: {
-    //   type: String,
-    //   required: [true, "City is required"],
-    //   minLength: [3, "City should have atleast 3 characters"],
-    // },
-    // gender: {
-    //   type: String,
-    //   enum: ["Male", "Female", "Other"],
-    // },
+    contact: {
+      type: String,
+      required: [true, "Contact is required"],
+      maxLength: [10, "Contact should not exceed more than 10 characters"],
+      minLength: [10, "Contact should have atleast 10 characters"],
+    },
+    city: {
+      type: String,
+      required: [true, "City is required"],
+      minLength: [3, "City should have atleast 3 characters"],
+    },
+    gender: {
+      type: String,
+      enum: ["Male", "Female", "Other"],
+    },
     avatar: {
       type: Object,
       default: {
